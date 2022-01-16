@@ -4,6 +4,14 @@ import { getToDos } from '../services/todos'
 export default function ToDoList() {
     const [toDoList, setToDoList] = useState([])
 
+    const changeTodoStatusHandler = (id) => {
+        const list = [...toDoList]
+        const indexToChange = list.findIndex(item => item.id === id)
+        const itemToChange = list[indexToChange]
+        list[indexToChange] = { ...itemToChange, done: !itemToChange.done }
+        setToDoList(list)
+    }
+
     useEffect(async () => {
         try {
             await getToDos()
@@ -21,17 +29,18 @@ export default function ToDoList() {
             <br />
             <h1>Your current To DOS</h1>
             {
-                // display all todos
-                toDoList && toDoList.map(item =>
+                // displays the done items at the bottom of the list 
+                toDoList && toDoList.sort(({done}) => done ? 1 : -1).map(item =>
                     <>
                         <input 
                             key={item.id}
                             id={item.id}
                             type="checkbox"
                             checked={item.done}
+                            onChange={() => changeTodoStatusHandler(item.id)}
                         />
                         <label for={item.id} >
-                            { item.title }
+                            { item.done ? <strike>{item.title}</strike> : item.title }
                         </label>
                         <br />
                     </>
