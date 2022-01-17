@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { getToDos } from '../services/todos'
+import AddToDo from './AddToDo'
 
-export default function ToDoList() {
+export default function ToDoList(props) {
     const [toDoList, setToDoList] = useState([])
 
     const [showToDoItem, setShowToDoItem] = useState({visble: false})
@@ -34,6 +35,9 @@ export default function ToDoList() {
     return (
         <div>
             <br />
+
+            <AddToDo />
+
             <h1>Your current To DOS</h1>
             {
                 // displays the done items at the bottom of the list 
