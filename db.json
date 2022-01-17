@@ -2,17 +2,20 @@
     "todos": [
         {
             "id": "1",
-            "title": "Create React App", 
+            "title": "Create React App",
+            "description": "This is the first step to building a react application", 
             "done": false
         },
         {
             "id": "2",
-            "title": "Display ToDO List", 
+            "title": "Display ToDO List",
+            "description": "This step displays all the todos in the database", 
             "done": false
         },
         {
             "id": "3",
-            "title": "Modify ToDO Item", 
+            "title": "Modify ToDO Item",
+            "description": "This step allows to modify an exisitng todo item", 
             "done": false
         }
 
